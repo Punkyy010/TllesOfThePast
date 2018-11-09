@@ -1,0 +1,376 @@
+grass - 
+
+//coliziunea x
+//camera pt despawn mobi x
+//stergerea mobilor x
+
+
+
+		if(Top == true && !isSwimming && !isClimbing){
+				if (anim % 40 > 10) {
+					sprite = Sprite.player_up;
+				} else {
+					sprite = Sprite.player_up_breath;
+				}
+			if (walking) {
+				if (anim % 20 > 10) {
+					sprite = Sprite.player_up_1;
+				} else {
+					sprite = Sprite.player_up_2;
+				}
+			}
+		}else{
+			if(dir == 0){
+				if(isSwimming){
+					sprite = Sprite.player_water_up;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_water_up;
+						} else {
+							
+							sprite = Sprite.player_water_up_2;
+						}
+					}
+				}
+				if(isClimbing && !isSwimming){
+					sprite = Sprite.player_climb_up;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_climb_up_2;
+						} else {
+							sprite = Sprite.player_climb_up_3;
+						}
+					}
+				}
+			}
+		}	
+		
+		if(RTop == true && !isSwimming && !isClimbing){
+			if (anim % 40 > 10) {
+				sprite = Sprite.player_side_up_3;
+			} else {
+				sprite = Sprite.player_side_up_breath;
+			}
+			flip = 1;
+			if (walking) {
+				if (anim % 20 > 10) {
+					sprite = Sprite.player_side_up;
+				} else {
+					sprite = Sprite.player_side_up_2;
+				}
+			}
+		}else{
+			if(dir == 0){
+				if(isSwimming){
+					sprite = Sprite.player_water_up;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_water_up;
+						} else {
+							
+							sprite = Sprite.player_water_up_2;
+						}
+					}
+				}
+				if(isClimbing && !isSwimming){
+					sprite = Sprite.player_climb_up;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_climb_up_2;
+						} else {
+							sprite = Sprite.player_climb_up_3;
+						}
+					}
+				}
+			}
+		}	
+		
+		if(LTop == true && !isSwimming && !isClimbing){
+			if (anim % 40 > 10) {
+				sprite = Sprite.player_side_up_3;
+			} else {
+				sprite = Sprite.player_side_up_breath;
+			}
+			if(walking)
+			anim2(Sprite.player_side_up,Sprite.player_side_up_2,anim,walking);
+		}
+
+		
+		
+		if(Down == true && !isSwimming && !isClimbing){
+			if (walking) {
+				if (anim % 20 > 10) {
+					sprite = Sprite.player_down_1;
+				} else {
+					sprite = Sprite.player_down_2;
+				}
+			}else {
+				if (anim % 40 > 10) {
+					sprite = Sprite.player_down;
+				} else {
+					sprite = Sprite.player_down_breath;
+				}
+			}
+		}else{
+			if (dir == 2) {
+				if(isSwimming){
+					sprite = Sprite.player_water_down;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_water_down;
+						} else {
+							sprite = Sprite.player_water_down_1;
+						}
+					}
+				}
+				if(isClimbing && !isSwimming){
+					sprite = Sprite.player_climb_up;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_climb_up_2;
+						} else {
+							sprite = Sprite.player_climb_up_3;
+						}
+					}
+				}
+			}
+		}
+		
+		if(LDown == true && !isSwimming && !isClimbing){
+			if (anim % 40 > 10) {
+				sprite = Sprite.player_side_down_3;
+			} else {
+				sprite = Sprite.player_side_down_breath;
+			}
+			if (walking) {
+				if (anim % 20 > 10) {
+					sprite = Sprite.player_side_down;
+				} else {
+					sprite = Sprite.player_side_down_2;
+				}
+			}
+		}else{
+			if (dir == 2) {
+				if(isSwimming){
+					sprite = Sprite.player_water_down;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_water_down;
+						} else {
+							sprite = Sprite.player_water_down_1;
+						}
+					}
+				}
+				if(isClimbing && !isSwimming){
+					sprite = Sprite.player_climb_up;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_climb_up_2;
+						} else {
+							sprite = Sprite.player_climb_up_3;
+						}
+					}
+				}
+			}
+		}
+		
+		if(RDown == true && !isSwimming && !isClimbing){
+			if (anim % 40 > 10) {
+				sprite = Sprite.player_side_down_3;
+			} else {
+				sprite = Sprite.player_side_down_breath;
+			}
+			flip=1;
+			if (walking) {
+				if (anim % 20 > 10) {
+					sprite = Sprite.player_side_down;
+				} else {
+					sprite = Sprite.player_side_down_2;
+				}
+			}
+		}else{
+			if (dir == 2) {
+				if(isSwimming){
+					sprite = Sprite.player_water_down;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_water_down;
+						} else {
+							sprite = Sprite.player_water_down_1;
+						}
+					}
+				}
+				if(isClimbing && !isSwimming){
+					sprite = Sprite.player_climb_up;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_climb_up_2;
+						} else {
+							sprite = Sprite.player_climb_up_3;
+						}
+					}
+				}
+			}
+		}
+		
+		
+		if(Right == true && !isSwimming && !isClimbing){
+			if (anim % 40 > 10) {
+				sprite = Sprite.player_side;
+			} else {
+				sprite = Sprite.player_side_1;
+			}
+			flip = 1;
+			isFlipped = true;
+			if (walking) {
+				if (anim % 20 > 10) {
+					sprite = Sprite.player_side_2;
+				} else {
+					sprite = Sprite.player_side_3;
+				}
+			}
+		}else{
+			if (dir == 1) {
+				if(isSwimming){
+					sprite = Sprite.player_water_side;
+					flip = 1;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_water_side;
+						} else {
+							sprite = Sprite.player_water_side_1;
+						}
+					}
+				}
+				if(isClimbing && !isSwimming){
+					sprite = Sprite.player_climb_up;
+					flip = 1;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_climb_side;
+						} else {
+							sprite = Sprite.player_climb_side_1;
+						}
+					}
+				}
+			}
+		}
+		
+		if(Left == true && !isSwimming && !isClimbing){
+			if (anim % 40 > 10) {
+				sprite = Sprite.player_side;
+			} else {
+				sprite = Sprite.player_side_1;
+			}
+			if (walking) {
+				if (anim % 20 > 10) {
+					sprite = Sprite.player_side_2;
+				} else {
+					sprite = Sprite.player_side_3;
+				}
+			}
+		}else{
+			if (dir == 3) {
+				if(isSwimming){
+					sprite = Sprite.player_water_side;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_water_side;
+						} else {
+							sprite = Sprite.player_water_side_1;
+						}
+					}
+				}
+				if(isClimbing && !isSwimming){
+					sprite = Sprite.player_climb_up;
+					if (walking) {
+						if (anim % 20 > 10) {
+							sprite = Sprite.player_climb_side;
+						} else {
+							sprite = Sprite.player_climb_side_1;
+						}
+					}
+				}
+			}
+		}
+		//this.add(steps(1));
+		//if(walking) steps(x,y,flip,screen);
+
+		if(!isSwimming && !isClimbing){
+			screen.renderMob2((int)x, (int)y+7, Sprite.player_shadow, flip);
+		}
+		
+		if(!isSwimming && !isClimbing){
+			if(LDown){
+				screen.renderMob((int)x,(int)y+2,Sprite.sword_2,1);
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+				if(selected == "Gun")
+					screen.renderMob2(xgun -9, ygun + 6 , gun, flip);
+				if(selected == "Sword")
+					screen.renderMob2(xgun - 9, ygun+8, sword, flip);
+			}if(RDown){
+				screen.renderMob((int)x,(int)y+2,Sprite.sword_2,1);
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+				if(selected == "Gun")
+				screen.renderMob2(xgun -1, ygun + 6 , gun, flip);
+				if(selected == "Sword")
+					screen.renderMob2(xgun - 3, ygun+8, sword, flip);
+			}if(Down){
+				screen.renderMob((int)x,(int)y+2,Sprite.sword_2,1);
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+				if(selected == "Gun")
+				screen.renderMob2(xgun , ygun + 5 , gun, flip);
+				if(selected == "Sword")
+					screen.renderMob2(xgun - 5, ygun+6, sword, flip);
+			}if(Left){
+				screen.renderMob((int)x,(int)y+2,Sprite.sword_2,1);
+				if(selected == "Gun")
+				screen.renderMob2(xgun -16, ygun + 5 , gun, flip);
+				if(selected == "Sword")
+					screen.renderMob2(xgun - 16, ygun+5, sword, flip);
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+			}if(Right){
+				screen.renderMob((int)x,(int)y+2,Sprite.sword_2,1);
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+				if(selected == "Gun")
+					screen.renderMob2(xgun -4, ygun + 5 , gun, flip);
+				if(selected == "Sword")
+					screen.renderMob2(xgun - 4, ygun+5, sword, flip);
+			}if(RTop){
+				if(selected == "Gun")
+				screen.renderMob2(xgun +2 , ygun -2 , gun, flip);
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+				screen.renderMob((int)x+1,(int)y+3,Sprite.sword_2,0);
+			}if(LTop){
+				if(selected == "Gun")
+				screen.renderMob2(xgun -12 , ygun -2 , gun, flip);
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+				screen.renderMob((int)x+1,(int)y+3,Sprite.sword_2,0);
+			}if(Top){
+				if(selected == "Gun")
+				screen.renderMob2(xgun , ygun -6 , gun, flip);
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+				screen.renderMob((int)x+1 ,(int)y+3,Sprite.sword_2,0);
+			}
+		}else{
+			if(LDown){
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+			}if(RDown){
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+			}if(Down){
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+			}if(Left){
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+			}if(Right){
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+			}if(RTop){
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+			}if(LTop){
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+			}if(Top){
+				screen.renderMob2((int)x, (int)y, sprite, flip);
+			}
+		}
+		//screen.renderMob2(x, y, Sprite.player_new, flip);
+		
+	}
