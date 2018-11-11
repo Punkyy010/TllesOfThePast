@@ -3,11 +3,13 @@ package com.tavi.totp.entity.mob;
 import java.util.Random;
 import com.tavi.totp.Game;
 import com.tavi.totp.graphics.Screen;
+import com.tavi.totp.graphics.Sprite;
 import com.tavi.totp.level.Level;
 import com.tavi.totp.level.tile.Tile;
 
 public class Entity {
 
+	protected Sprite sprite;
 	public double x;
 	public double y;
 	public int xp ,yp;
@@ -24,7 +26,58 @@ public class Entity {
 	public int health_now = health;
 	public int health_ratio = 4;
 
-	 
+	public boolean findStartPos(Level level){
+		int x = random.nextInt(Level.width);
+		int y = random.nextInt(Level.height);
+		int xx = x * 32 + 16;
+		int yy = y * 32 + 16;
+		
+		if (level.player != null) {
+			int xd = (int)level.player.x - xx;
+			int yd = (int)level.player.y - yy;
+			if (xd * xd + yd * yd < 80 * 80) return false;
+		}
+		
+		if(level.entities.size() > 50) return false;
+		//System.out.println(level.entities.size());
+		
+		if(level.getTile(x, y).mayPass(level, x, y, this) == false ){
+			this.x = xx;
+			this.y = yy;
+			return true;
+		}
+		
+		return false;
+		
+	}
+	
+	public boolean findTilePos(Level level,Tile tile) {
+		int x0 = 0;
+		int x1 = Level.width;
+		int y0 = 0;
+		int y1 = Level.height;
+		int xx = (int)x * 32;
+		int yy = (int)y * 32;
+		
+		if (level.player != null) {
+			int xd = (int)level.player.x - xx;
+			int yd = (int)level.player.y - yy;
+			if (xd * xd + yd * yd < 80 * 80) return false;
+		}
+		
+		for(int yt = y0;yt <= y1;yt+=32) {
+			for(int xt = x0; xt <= x1; xt+=32) {
+				if(level.getTile(xt, yt) == tile) {					
+					this.x = xt *32;
+					this.y = yt *32;
+					return true;
+				}
+			}
+		}
+		
+		
+		return false;
+	}
 
 	public void update() {
 	
@@ -77,9 +130,10 @@ public class Entity {
         }
         if (level.getTile((int)this.x / 32, (int)this.y / 32).getId() == 25) {
         	xMax = 32;
-        	xMin = 3;
-        	yMax = 11;
+        	xMin = 32;
+        	yMax = 7;
         }
+        
         
         int yMinWater = 0;
         for (int x = xMin; x < xMax; x++) {

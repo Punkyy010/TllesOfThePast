@@ -15,6 +15,8 @@ import com.tavi.totp.entity.mob.Pagan;
 import com.tavi.totp.entity.mob.Particle;
 import com.tavi.totp.entity.mob.Player;
 import com.tavi.totp.entity.mob.Steps;
+import com.tavi.totp.entity.mob.TreeLevel1;
+import com.tavi.totp.entity.mob.Trees;
 import com.tavi.totp.entity.mob.Zombie;
 import com.tavi.totp.entity.projectile.Projectile;
 import com.tavi.totp.graphics.Screen;
@@ -84,6 +86,7 @@ public class Level {
 	public List<Player> players = new ArrayList<Player>();
 	private List<Entity> particles = new ArrayList<Entity>();
 	private List<Entity> steps = new ArrayList<Entity>();
+	private List<Entity> trees = new ArrayList<Entity>();
 	//private List<Tile> tiless = new ArrayList<Tile>();
 	Random r = new Random();
 	
@@ -139,9 +142,7 @@ public class Level {
 			Spawn(10);
 			spawn_counter++;
 			
-		}
-		
-	
+		}		
 		
 		for (int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i);
@@ -213,6 +214,7 @@ public class Level {
 	
 	public void Spawn(int count){
 		Mob mob = null;
+		Entity e = null;
 		//for(int i = 0;i < count;i++){
 			
 			int level = Game.currentLevel;
@@ -226,7 +228,14 @@ public class Level {
 			else if(random.nextInt(2) == 1  && Game.currentLevel == 3)
 				mob = new Ghost(level);
 		
+			e = new TreeLevel1(level);
 			
+			//if(Game.currentLevel == 0) {
+				if(e != null && e.findStartPos(this)) {
+					this.add(e);
+					System.out.println("TREE FOUND");
+				}
+			//}
 			
 			if(mob != null && mob.findStartPos(this)){
 				this.add(mob);
@@ -280,7 +289,7 @@ public class Level {
 				getTile(x, y).render(x, y, screen);
 				getShadow(x, y).render(x, y, screen);
 				getTileOver(x, y).render(x, y, screen);
-				//System.out.println("te");
+				//System.out.println("te")
 			}
 		}
 		screen.setOffset(0, 0);
@@ -299,6 +308,8 @@ public class Level {
 			projectiles.add((Projectile) entity);
 		}else if(entity instanceof Steps){
 			steps.add((Steps) entity);
+		}else if(entity instanceof Trees) {
+			trees.add((Trees) entity);
 		}
 			entity.removed = false;
 			entities.add(entity);
@@ -398,7 +409,9 @@ public class Level {
 		Tile.flip = 0;
 		if (tiles[x + y * width] == GRASS_COL)  return Tile.grassOver;
 		Tile.flip = 0;
-		if(tiles[x + y * width] == TREEBOTTOM_COL) return Tile.treebtmTile;
+		if(tiles[x + y * width] == TREEBOTTOM_COL) {
+			return Tile.treebtmTile;
+		}
 		Tile.flip = 0;
 		if (tiles[x + y * width] == FLOWER_COL) return Tile.flowerTile;
 		Tile.flip = 0;
@@ -565,7 +578,7 @@ public class Level {
 		Tile.flip = 0;
 		//WATER finish
 		
-		if(tiles[x + y * width] == TREETOP_COL) return Tile.treetopTile;
+		//if(tiles[x + y * width] == TREETOP_COL) return Tile.treetopTile;
 		//if (tiles[x + y * width] == 0xFF000000) return Tile.caveTile;
 		if (tiles[x + y * width] == WALLTILE_COL) return Tile.wallTile;
 		//if (tiles[x + y * width] == HEAL_COL) return Tile.healTile;

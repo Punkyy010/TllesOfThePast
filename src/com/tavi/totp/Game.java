@@ -15,6 +15,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import com.tavi.totp.entity.mob.Player;
+import com.tavi.totp.entity.mob.TreeLevel1;
 import com.tavi.totp.graphics.Font;
 import com.tavi.totp.graphics.Screen;
 import com.tavi.totp.input.Keyboard;
@@ -34,6 +35,7 @@ public class Game extends Canvas implements Runnable {
 	public static boolean sound = true;
 
 	private Player player;
+	private TreeLevel1 t;
 	public static boolean running = false;
 
 	private Screen screen; 
@@ -229,10 +231,11 @@ public class Game extends Canvas implements Runnable {
 		
 		level.renderBackground((int)xScroll,(int)yScroll, screen);
 		level.renderSprites(screen,(int)xScroll,(int)yScroll);
+		//level.renderBackgroundObjects((int)xScroll,(int)yScroll,screen);
 		if(menu != null){
 			menu.render(screen);
 		}
-
+		
 		if(Player.health != 0){
 			if(menu == null){
 				gui.paint(g,xScroll,yScroll);

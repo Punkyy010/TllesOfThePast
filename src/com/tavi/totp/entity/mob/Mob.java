@@ -14,7 +14,6 @@ import com.tavi.totp.level.tile.Tile;
 
 public abstract class Mob extends Entity {
 
-	protected Sprite sprite;
 	protected int dir = 0;
 	protected boolean moving = false;
 	protected int xKnockback , yKnockback;
@@ -127,31 +126,6 @@ public abstract class Mob extends Entity {
 			}
 		}
 		return true;
-	}
-	
-	public boolean findStartPos(Level level){
-		int x = random.nextInt(Level.width);
-		int y = random.nextInt(Level.height);
-		int xx = x * 32 + 16;
-		int yy = y * 32 + 16;
-		
-		if (level.player != null) {
-			int xd = (int)level.player.x - xx;
-			int yd = (int)level.player.y - yy;
-			if (xd * xd + yd * yd < 80 * 80) return false;
-		}
-		
-		if(level.entities.size() > 50) return false;
-		//System.out.println(level.entities.size());
-		
-		if(level.getTile(x, y).mayPass(level, x, y, this) == false ){
-			this.x = xx;
-			this.y = yy;
-			return true;
-		}
-		
-		return false;
-		
 	}
 	
 	public boolean blocks(Entity e) {
