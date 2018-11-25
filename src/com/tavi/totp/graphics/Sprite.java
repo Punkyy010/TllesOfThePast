@@ -277,6 +277,17 @@ public class Sprite {
 	public static Sprite player_hands_front = new Sprite(18,9,1,SpriteSheet.player2);
 	public static Sprite player_feet_front = new Sprite(18,10,1,SpriteSheet.player2);
 	
+	//sword weapon
+	public static Sprite sword_left = new Sprite(18,0,0,SpriteSheet.weapons);
+	public static Sprite sword_right = new Sprite(18,2,0,SpriteSheet.weapons);
+	public static Sprite sword_down_left = new Sprite(18,1,0,SpriteSheet.weapons);
+	public static Sprite sword_down_right = new Sprite(18,3,0,SpriteSheet.weapons);
+	public static Sprite sword_up_right = new Sprite(18,4,0,SpriteSheet.weapons);
+	public static Sprite sword_up_left = new Sprite(18,5,0,SpriteSheet.weapons);
+	public static Sprite sword_up = new Sprite(18,6,0,SpriteSheet.weapons);
+	public static Sprite sword_down = new Sprite(18,7,0,SpriteSheet.weapons);
+	public static Sprite sword_back = new Sprite(18,8,0,SpriteSheet.weapons);
+	
 	public Sprite(SpriteSheet sheet,int width,int height){
 		SIZE = (width == height) ? width : -1;
 		this.width = width;

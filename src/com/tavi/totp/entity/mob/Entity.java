@@ -51,6 +51,11 @@ public class Entity {
 		
 	}
 	
+	public boolean isInRadius(double px,double py,int radius) {
+		return !(this.x + xr + radius < px || this.y + yr + radius < py || this.x - xr - radius > px || this.y - yr - radius > py);
+	}
+	
+	
 	public boolean findTilePos(Level level,Tile tile) {
 		int x0 = 0;
 		int x1 = Level.width;

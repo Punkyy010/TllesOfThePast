@@ -223,8 +223,8 @@ public class Game extends Canvas implements Runnable {
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		
 		isLimit = false;
-		double xScroll = player.x - screen.width / 2;
-		double yScroll = player.y - screen.height / 2;
+		double xScroll = player.x + 6 - Screen.width / 2;
+		double yScroll = player.y + 9 - Screen.height / 2;
 	
 		xScroll = get_xScroll(xScroll);
 		yScroll = get_yScroll(yScroll);
@@ -238,7 +238,7 @@ public class Game extends Canvas implements Runnable {
 		
 		if(Player.health != 0){
 			if(menu == null){
-				gui.paint(g,xScroll,yScroll);
+				//gui.paint(g,xScroll,yScroll);
 				gui.render(screen);
 			}
 		}

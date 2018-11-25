@@ -13,6 +13,7 @@ public class SwordProjectile extends Projectile{
 		range = 5;
 		speed = 0.5;
 		sprite = Sprite.shoot_fist;
+		FIRE_RATE = 20;
 	}
 	
 	public void move() {

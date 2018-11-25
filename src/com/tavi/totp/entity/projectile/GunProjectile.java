@@ -12,7 +12,6 @@ public class GunProjectile extends Projectile {
 
 	//private Tile tile;
 	public static int DAMAGE = 1;
-	public static int FIRE_RATE = 30;
 	public static boolean isHit = false;
 	public Player player;
 	public static Random random = new Random();
@@ -25,7 +24,7 @@ public class GunProjectile extends Projectile {
 		sprite = Sprite.bullet_1;
 		nx = speed * Math.cos(angle);
 		ny = speed * Math.sin(angle);
-
+		FIRE_RATE = 30;
 	}
 
 	public void update() {

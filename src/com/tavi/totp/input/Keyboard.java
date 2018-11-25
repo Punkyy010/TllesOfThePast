@@ -57,6 +57,7 @@ public class Keyboard implements KeyListener {
 	public Key four = new Key();
 	public Key esc = new Key();
 	public Key e = new Key();
+	public Key c = new Key();
 	
 	public void releaseAll(){
 		for(int i = 0 ; i < keys.size();i++){
@@ -86,6 +87,7 @@ public class Keyboard implements KeyListener {
 		if(key.getKeyCode() == KeyEvent.VK_5) five.toggle(pressed);
 		if(key.getKeyCode() == KeyEvent.VK_ESCAPE) esc.toggle(pressed);
 		if(key.getKeyCode() == KeyEvent.VK_E) e.toggle(pressed);
+		if(key.getKeyCode() == KeyEvent.VK_C) c.toggle(pressed);
 		
 	}
 

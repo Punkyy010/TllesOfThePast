@@ -38,7 +38,7 @@ public abstract class Projectile extends Entity {
 			Entity e = level.entities.get(i);
 			if(e instanceof Zombie || e instanceof Pagan || e instanceof Ghost){
 				if((int)x /32 == (int)e.x /32 && (int)y /32 == (int)e.y /32){
-					DMG = random.nextInt(DAMAGE) + 2;
+					DMG = random.nextInt(DAMAGE+1);
 					remove();
 					e.isHit = true;
 					level.add(new TextParticle("" + DMG, (int)e.x, (int)e.y , 0xFFff3434));

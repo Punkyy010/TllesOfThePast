@@ -231,10 +231,10 @@ public class Level {
 			e = new TreeLevel1(level);
 			
 			//if(Game.currentLevel == 0) {
-				if(e != null && e.findStartPos(this)) {
-					this.add(e);
-					System.out.println("TREE FOUND");
-				}
+				//if(e != null && e.findStartPos(this)) {
+					//this.add(e);
+					//System.out.println("TREE FOUND");
+				//}
 			//}
 			
 			if(mob != null && mob.findStartPos(this)){

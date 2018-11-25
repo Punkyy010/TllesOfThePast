@@ -43,10 +43,10 @@ public abstract class Mob extends Entity {
 			//if(!(this.equals(e))){
 				if((int)x /32 == (int)e.x /32 && (int)y /32 == (int)e.y /32){
 					DAMAGE = random.nextInt(DAMAGE);
-					//remove();
+					remove();
 					e.isHit = true;
 					level.add(new TextParticle("" + DAMAGE, (int)e.x, (int)e.y , 0xFFff3434));
-					//if(DMG == DAMAGE + 1) level.add(new TextParticle("CRIT!", (int)e.x + 20, (int)e.y +20, 0xFFff3434));
+					if(Damage == DAMAGE + 1) level.add(new TextParticle("CRIT!", (int)e.x + 20, (int)e.y +20, 0xFFff3434));
 					e.health -= DAMAGE;
 					if(e.health <= 0){
 						for(int j = 0;j <= Level.mobmoney;j++){

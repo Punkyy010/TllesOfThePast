@@ -6,6 +6,8 @@ import com.tavi.totp.Game;
 import com.tavi.totp.Gui;
 import com.tavi.totp.TransitionMenu;
 import com.tavi.totp.WinMenu;
+import com.tavi.totp.entity.mob.weapons.Sword;
+import com.tavi.totp.entity.mob.weapons.Weapon;
 import com.tavi.totp.entity.projectile.GunProjectile;
 import com.tavi.totp.graphics.Screen;
 import com.tavi.totp.graphics.Sprite;
@@ -34,12 +36,13 @@ public class Player extends Mob {
 	public int sprint = 10;
 	public boolean isBlack = false;
 	public static boolean walking;
-	public static int maxhealth = 6;
+	public static int maxHealth = 6;
 	private int maxstamina = 6; 
 	public static int health;
 	public static int stamina;
 	public int fireRate = 0;
 	public Steps steps;
+	public static boolean inHand = false;
 	public static boolean isHurt = false;
 	public static boolean isSwimming = false;
 	public static boolean isShooting = false;
@@ -64,6 +67,7 @@ public class Player extends Mob {
 	private Body body;
 	private Arms arms;
 	private Legs legs;
+	private Weapon weapon;
 	
 	public static final String Name = "Player";
 	
@@ -78,7 +82,7 @@ public class Player extends Mob {
 		x = 30 * 32;
 		y = 46 * 32;
 		money = 0;
-		health = maxhealth;
+		health = maxHealth;
 		stamina = maxstamina;
 		sprite = Sprite.player_down;
 		gun = Sprite.gun_top;
@@ -87,6 +91,7 @@ public class Player extends Mob {
 		body = new ClassicBody();
 		arms = new ClassicArms();
 		legs = new ClassicLegs();
+		weapon = new Sword();
 	}
 	
 	protected void die(){
@@ -115,7 +120,7 @@ public class Player extends Mob {
 		}else Right = false;
 		if(angle > 120 && angle < 150){
 			RTop = true;
-			dirr = 2;
+			dirr = 3;
 			dirView = 3;
 		}else RTop = false;
 		if(angle > 150 && angle < 180 ){
@@ -236,22 +241,34 @@ public class Player extends Mob {
 	public boolean blocks(Entity e){
 		return true;
 	}
+	
+	public void weaponInHand() {
+		if(input.c.clicked && inHand == false) {
+			inHand = true;
+		}else if(input.c.clicked && inHand == true){
+			inHand = false;
+		}
+	}
+	
 	int time = 100;
 	public void update() {
 		xp = (int)x;
 		yp = (int)y;
 		
-		if(input.one.down) {
+		if(input.one.clicked) {
 			body = new CamoBody();
 		}
-		if(input.two.down) {
+		if(input.two.clicked) {
 			head = new ArmorHead();
 		}
+		
+		weaponInHand();
 		
 		head.update();
 		legs.update();
 		arms.update();
 		body.update();
+		weapon.update();
 		
 		if(walking){
 				if(anim%40>10){
@@ -267,8 +284,8 @@ public class Player extends Mob {
 			time = 100;
 		}
 		
-		double dx = Mouse.getX() - Game.getWindowWidth() / 2 + 9;
-		double dy = Mouse.getY() - Game.getWindowHeight() / 2 + 9;
+		double dx = Mouse.getX() - Game.getWindowWidth() / 2;
+		double dy = Mouse.getY() - Game.getWindowHeight() / 2;
 		double angle = Math.atan2(dx, dy) * 180 / Math.PI;
 		
 		// dir 1 = left
@@ -298,7 +315,6 @@ public class Player extends Mob {
 		
 		double xa = 0;
 		double ya = 0;
-		//double waterspeed = 1;
 		long timer = System.currentTimeMillis();
 		
 		if(isSwimming){
@@ -422,7 +438,12 @@ public class Player extends Mob {
 
 	}
 	
-	
+	public double getX() {
+		return x;
+	}
+	public double getY() {
+		return y;
+	}
 	
 	public boolean findStartPos(Level level){
 		while(true){
@@ -456,13 +477,6 @@ public class Player extends Mob {
 			shoot(x, y, dir);
 			Sound.shoot2.play();
 			fireRate = GunProjectile.FIRE_RATE;
-			
-			//List<com.tavi.totp.entity.Entity> entities = level.getEntities((int)x,(int) y, (int)Player.x, (int)Player.y);
-			//for (int i = 0; i < entities.size(); i++) {
-			//	com.tavi.totp.entity.Entity e = entities.get(i);
-			//	System.out.println(e);
-			//}
-			
 		}
 	}
 	
@@ -487,14 +501,33 @@ public class Player extends Mob {
 	}
 
 	public void render(Screen screen) {
-		//int flip = 0;
-		
 		if(!isSwimming) {
 			isFlipped = false;
-			body.render((int)x, (int)y,dirView, screen);
-			head.render((int)x,(int)y,dirView,screen);
-			legs.render((int)x, (int)y, dirView, screen);
-			arms.render((int)x,(int)y,dirView,screen);
+			if(dirr == 3 && inHand) {
+				weapon.render((int)x, (int)y, dirView, screen);
+				body.render((int)x, (int)y,dirView, screen);
+				head.render((int)x,(int)y,dirView,screen);
+				legs.render((int)x, (int)y, dirView, screen);
+				arms.render((int)x,(int)y,dirView,screen);
+			}else if(dirr == 1 && inHand){
+				weapon.render((int)x, (int)y, dirView, screen);
+				body.render((int)x, (int)y,dirView, screen);
+				head.render((int)x,(int)y,dirView,screen);
+				legs.render((int)x, (int)y, dirView, screen);
+				arms.render((int)x,(int)y,dirView,screen);
+			}else if(dirr != 3 && !inHand){
+				weapon.render((int)x, (int)y, dirView, screen);
+				body.render((int)x, (int)y,dirView, screen);
+				head.render((int)x,(int)y,dirView,screen);
+				legs.render((int)x, (int)y, dirView, screen);
+				arms.render((int)x,(int)y,dirView,screen);
+			}else {
+				body.render((int)x, (int)y,dirView, screen);
+				head.render((int)x,(int)y,dirView,screen);
+				legs.render((int)x, (int)y, dirView, screen);
+				weapon.render((int)x, (int)y, dirView, screen);
+				arms.render((int)x,(int)y,dirView,screen);
+			}
 		}else {
 			Swimming(screen);
 		}

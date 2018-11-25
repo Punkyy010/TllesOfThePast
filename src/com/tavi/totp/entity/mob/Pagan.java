@@ -11,14 +11,43 @@ public class Pagan extends Mob{
 	private int xa,ya;
 	public int health ;
 	public int Damage = 1;
+	private Player player;
 	
 	public Pagan(int level){
 		sprite = Sprite.eschimo_down;
 		health = healthmax;
+		
 	}
 	
 	public boolean blocks(Entity e){
 		return true;
+	}
+	
+	public void randomWaking() {
+		Random random = new Random();
+		boolean isReady = false;
+		int rand = random.nextInt(5);
+		long time = System.currentTimeMillis();
+		
+		if(System.currentTimeMillis() - time > 1000) {
+			time +=1000;
+			System.out.println("is working");
+			rand = random.nextInt(5);
+			isReady = true;
+		}else {
+			isReady = false;
+		}
+		
+	
+		if(isReady) {
+			if(rand==0) { //up
+				ya-=2;
+				
+				
+			}else if(rand==1) { //down
+				ya+=2;
+			}
+		}	
 	}
 	
 	public void update(){
@@ -28,6 +57,7 @@ public class Pagan extends Mob{
 		
 		//Mob_Collision(Damage);
 		
+		randomWaking();
 		move();
 		
 		if (anim < 7500)
@@ -49,28 +79,19 @@ public class Pagan extends Mob{
 		
 		xa = 0;
 		ya = 0;
-		//int radius = 50;
+		int radius = 50;
 		int xp = Player.xp;
 		int yp = Player.yp;
 		//int dx = Math.abs(xp - (int)this.x);
 		//int dy = Math.abs(yp - (int)this.y);
 		//double distance = Math.sqrt((dx * dx) + (dy * dy));
-		if (isHit){
+		if (isHit && isInRadius(xp,yp,radius)){
 			if ((int)xp > this.x) xa += 1;
 			if ((int)xp < this.x) xa -= 1;
 			if ((int)yp > this.y) ya += 1;
 			if ((int)yp < this.y) ya -= 1;
-			
-		}else{
-			Random random = new Random();
-			if(random.nextInt(40)==0){
-				xa = random.nextInt(3)-1;
-				ya = random.nextInt(3)-1;
-				if (random.nextInt(4) == 0) {
-					xa = 0;
-					ya = 0;		
-				}
-			}
+		}else {
+			isHit = false;
 		}
 		
 		if (xa != 0 || ya != 0) {

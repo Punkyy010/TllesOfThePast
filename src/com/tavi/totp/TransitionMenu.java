@@ -22,7 +22,7 @@ public class TransitionMenu extends Menu{
 		time += 2;
 		if(time == 30) {
 			Level.kills = 0;
-			Player.health = Player.maxhealth;
+			Player.health = Player.maxHealth;
 			game.changeLevel(dir);
 			
 		}
