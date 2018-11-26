@@ -14,7 +14,11 @@ public class SwordProjectile extends Projectile{
 		super(x,y,dir);
 		range = 5;
 		speed = 0.5;
+<<<<<<< HEAD
 		sprite = Sprite.shoot_fist_down;
+=======
+		sprite = Sprite.shoot_fist;
+>>>>>>> 5360f2dfcb2cec230bbec932ee21a7371e3a76cf
 		FIRE_RATE = 20;
 	}
 	

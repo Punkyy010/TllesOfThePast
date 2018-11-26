@@ -6,7 +6,10 @@ import com.tavi.totp.Game;
 import com.tavi.totp.Gui;
 import com.tavi.totp.TransitionMenu;
 import com.tavi.totp.WinMenu;
+<<<<<<< HEAD
 import com.tavi.totp.entity.mob.weapons.Fist;
+=======
+>>>>>>> 5360f2dfcb2cec230bbec932ee21a7371e3a76cf
 import com.tavi.totp.entity.mob.weapons.Sword;
 import com.tavi.totp.entity.mob.weapons.Weapon;
 import com.tavi.totp.entity.projectile.GunProjectile;
@@ -65,8 +68,12 @@ public class Player extends Mob {
 	private Body body;
 	private Arms arms;
 	private Legs legs;
+<<<<<<< HEAD
 	public static Weapon weapon = new Fist();
 	public static int Damage = weapon.avgDmg;
+=======
+	private Weapon weapon;
+>>>>>>> 5360f2dfcb2cec230bbec932ee21a7371e3a76cf
 	
 	public static final String Name = "Player";
 	

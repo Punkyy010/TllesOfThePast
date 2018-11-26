@@ -224,7 +224,11 @@ public class Game extends Canvas implements Runnable {
 		
 		isLimit = false;
 		double xScroll = player.x + 6 - Screen.width / 2;
+<<<<<<< HEAD
 		double yScroll = player.y + 9 - screen.height / 2;
+=======
+		double yScroll = player.y + 9 - Screen.height / 2;
+>>>>>>> 5360f2dfcb2cec230bbec932ee21a7371e3a76cf
 	
 		xScroll = get_xScroll(xScroll);
 		yScroll = get_yScroll(yScroll);

@@ -10,9 +10,13 @@ public abstract class Weapon {
 	protected Sprite Down,Up,Left,Right,Ldown,Rdown,Lup,Rup,notEquiped;
 	protected int anim = 0;
 	protected Projectile p;
+<<<<<<< HEAD
 	public int avgDmg;
 	public int avgSpeed;
 	public int avgWeight;
+=======
+
+>>>>>>> 5360f2dfcb2cec230bbec932ee21a7371e3a76cf
 	
 	public Sprite checkDir(int dirr,Sprite current) {
 		if(dirr == 0) current = Down; 

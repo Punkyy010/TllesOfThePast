@@ -11,9 +11,13 @@ public class Sword extends Weapon{
 	
 	
 	public Sword() {
+<<<<<<< HEAD
 		avgDmg = 2;
 		avgSpeed = 1;
 		avgWeight = 5;
+=======
+		
+>>>>>>> 5360f2dfcb2cec230bbec932ee21a7371e3a76cf
 	}
 	
 	protected void spriteChange() {
