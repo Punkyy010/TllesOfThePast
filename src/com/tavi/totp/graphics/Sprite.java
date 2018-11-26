@@ -178,10 +178,14 @@ public class Sprite {
 	public static Sprite player_sword_right = new Sprite(18,2,8,SpriteSheet.player2);
 	
 	public static Sprite shoot_wizard = new Sprite(18,0,4,SpriteSheet.player);
-	public static Sprite shoot_fist = new Sprite(16,1,4,SpriteSheet.player);
-	public static Sprite shoot_fist2 = new Sprite(16,2,4,SpriteSheet.player);
-	public static Sprite shoot_fist3 = new Sprite(16,3,4,SpriteSheet.player);
-	public static Sprite shoot_fist4 = new Sprite(16,0,5,SpriteSheet.player);
+	public static Sprite shoot_fist_down = new Sprite(16,1,4,SpriteSheet.player);
+	public static Sprite shoot_fist_right = new Sprite(16,2,4,SpriteSheet.player);
+	public static Sprite shoot_fist_left = new Sprite(16,3,4,SpriteSheet.player);
+	public static Sprite shoot_fist_up = new Sprite(16,0,5,SpriteSheet.player);
+	public static Sprite shoot_fist_rUp = new Sprite(16,0,6,SpriteSheet.player);
+	public static Sprite shoot_fist_lUp = new Sprite(16,1,6,SpriteSheet.player);
+	public static Sprite shoot_fist_lDown = new Sprite(16,2,6,SpriteSheet.player);
+	public static Sprite shoot_fist_rDown = new Sprite(16,3,6,SpriteSheet.player);
 	
 	public static Sprite gun_side = new Sprite(18,0,7,SpriteSheet.player2);
 	public static Sprite gun_top = new Sprite(18,2,7,SpriteSheet.player2);
@@ -276,6 +280,17 @@ public class Sprite {
 	
 	public static Sprite player_hands_front = new Sprite(18,9,1,SpriteSheet.player2);
 	public static Sprite player_feet_front = new Sprite(18,10,1,SpriteSheet.player2);
+	
+	//sword weapon
+	public static Sprite sword_left = new Sprite(18,0,0,SpriteSheet.weapons);
+	public static Sprite sword_right = new Sprite(18,2,0,SpriteSheet.weapons);
+	public static Sprite sword_down_left = new Sprite(18,1,0,SpriteSheet.weapons);
+	public static Sprite sword_down_right = new Sprite(18,3,0,SpriteSheet.weapons);
+	public static Sprite sword_up_right = new Sprite(18,4,0,SpriteSheet.weapons);
+	public static Sprite sword_up_left = new Sprite(18,5,0,SpriteSheet.weapons);
+	public static Sprite sword_up = new Sprite(18,6,0,SpriteSheet.weapons);
+	public static Sprite sword_down = new Sprite(18,7,0,SpriteSheet.weapons);
+	public static Sprite sword_back = new Sprite(18,8,0,SpriteSheet.weapons);
 	
 	public Sprite(SpriteSheet sheet,int width,int height){
 		SIZE = (width == height) ? width : -1;

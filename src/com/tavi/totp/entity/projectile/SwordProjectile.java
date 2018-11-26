@@ -1,6 +1,7 @@
 package com.tavi.totp.entity.projectile;
 
 import com.tavi.totp.entity.mob.Player;
+import com.tavi.totp.entity.mob.weapons.Weapon;
 import com.tavi.totp.graphics.Screen;
 import com.tavi.totp.graphics.Sprite;
 
@@ -8,35 +9,57 @@ public class SwordProjectile extends Projectile{
 
 	public int DAMAGE = 1,DMG=1;
 	
-	public SwordProjectile(double x,double y,double dir) {
+	
+	public SwordProjectile(double x,double y,double dir,Weapon w) {
 		super(x,y,dir);
 		range = 5;
 		speed = 0.5;
-		sprite = Sprite.shoot_fist;
+		sprite = Sprite.shoot_fist_down;
+		FIRE_RATE = 20;
 	}
 	
 	public void move() {
 		
-		switch(Player.dirr) {
+		switch(Player.dirView) {
+			case 0:
+				nx = 0;
+				ny = speed;
+				sprite = Sprite.shoot_fist_down;
+				break;
 			case 1:
-				nx = -speed;
-				ny = 0;
-				sprite = Sprite.shoot_fist3;
+				nx = speed;
+				ny = speed;
+				sprite = Sprite.shoot_fist_rDown;
 				break;
 			case 2:
 				nx = speed;
 				ny = 0;
-				sprite = Sprite.shoot_fist2;
+				sprite = Sprite.shoot_fist_right;
 				break;
 			case 3:
-				nx = 0;
+				nx = speed;
 				ny = -speed;
-				sprite = Sprite.shoot_fist4;
+				sprite = Sprite.shoot_fist_rUp;
 				break;
 			case 4:
 				nx = 0;
+				ny = -speed;
+				sprite = Sprite.shoot_fist_up;
+				break;
+			case 5:
+				nx = -speed;
+				ny = -speed;
+				sprite = Sprite.shoot_fist_lUp;
+				break;
+			case 6:
+				nx = -speed;
+				ny = 0;
+				sprite = Sprite.shoot_fist_left;
+				break;
+			case 7:
+				nx = -speed;
 				ny = speed;
-				sprite = Sprite.shoot_fist;
+				sprite = Sprite.shoot_fist_lDown;
 				break;
 		}
 		
@@ -59,15 +82,39 @@ public class SwordProjectile extends Projectile{
 		
 	}
 	
+	
 	public void render(Screen screen) {
-		if(Player.dirr == 1)
-			screen.renderProjectile((int)Player.xp - 12, (int)Player.yp + 1, this, 0);
-		if(Player.dirr == 2)
-			screen.renderProjectile((int)Player.xp + 12, (int)Player.yp + 1, this, 0);
-		if(Player.dirr == 3)
-			screen.renderProjectile((int)Player.xp + 1, (int)Player.yp - 12, this, 0);
-		if(Player.dirr == 4)
-			screen.renderProjectile((int)Player.xp + 1, (int)Player.yp + 14, this, 0);
+		
+		int xp = Player.xp;
+		int yp = Player.yp;
+		
+		if(Player.dirView == 0) {
+			xp = xp + 1;
+			yp = yp + 14;
+		}else if(Player.dirView == 1) {
+			xp = xp + 9;
+			yp = yp + 13;
+		}else if(Player.dirView == 2) {
+			xp = xp + 13;
+			yp = yp + 2;
+		}else if(Player.dirView == 3) {
+			xp = xp + 10;
+			yp = yp - 10;
+		}else if(Player.dirView == 4) {
+			xp = xp + 1;
+			yp = yp - 11;
+		}else if(Player.dirView == 5) {
+			xp = xp - 10;
+			yp = yp - 10;
+		}else if(Player.dirView == 6) {
+			xp = xp - 13;
+			yp = yp + 2;
+		}else {
+			xp = xp - 9;
+			yp = yp + 15;
+		}
+		
+		screen.renderProjectile(xp, yp, this, 0);
 		
 	}
 	

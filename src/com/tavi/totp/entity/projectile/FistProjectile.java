@@ -20,7 +20,7 @@ public class FistProjectile extends Projectile{
 			speed = 1;
 			//DAMAGE = 2;
 			FIRE_RATE = 30 ;
-			sprite = Sprite.shoot_fist;
+			sprite = Sprite.shoot_fist_down;
 			nx = speed * Math.cos(angle);
 			ny = speed * Math.sin(angle);
 
@@ -38,7 +38,7 @@ public class FistProjectile extends Projectile{
 			
 			
 			if(side)
-				sprite = Sprite.shoot_fist2;
+				sprite = Sprite.shoot_fist_left;
 			
 			
 			

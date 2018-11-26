@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 import com.tavi.totp.Game;
-import com.tavi.totp.Gui;
+import com.tavi.totp.entity.mob.weapons.Fist;
+import com.tavi.totp.entity.mob.weapons.Sword;
 import com.tavi.totp.entity.projectile.Projectile;
 import com.tavi.totp.entity.projectile.SwordProjectile;
 import com.tavi.totp.graphics.Screen;
@@ -43,10 +44,10 @@ public abstract class Mob extends Entity {
 			//if(!(this.equals(e))){
 				if((int)x /32 == (int)e.x /32 && (int)y /32 == (int)e.y /32){
 					DAMAGE = random.nextInt(DAMAGE);
-					//remove();
+					remove();
 					e.isHit = true;
 					level.add(new TextParticle("" + DAMAGE, (int)e.x, (int)e.y , 0xFFff3434));
-					//if(DMG == DAMAGE + 1) level.add(new TextParticle("CRIT!", (int)e.x + 20, (int)e.y +20, 0xFFff3434));
+					if(Damage == DAMAGE + 1) level.add(new TextParticle("CRIT!", (int)e.x + 20, (int)e.y +20, 0xFFff3434));
 					e.health -= DAMAGE;
 					if(e.health <= 0){
 						for(int j = 0;j <= Level.mobmoney;j++){
@@ -167,12 +168,12 @@ public abstract class Mob extends Entity {
 	protected void shoot(double x, double y, double dir) {
 		//dir *=  180 / Math.PI;
 		
-		if(Gui.wp == "1"){
-			Projectile q = new SwordProjectile(x, y, dir);
+		if(Player.weapon instanceof Fist){
+			Projectile q = new SwordProjectile(x, y, dir,new Fist());
 			level.add(q);
 		}
-		if(Gui.wp == "2"){
-			Projectile q = new SwordProjectile(x, y, dir);
+		if(Player.weapon instanceof Sword){
+			Projectile q = new SwordProjectile(x, y, dir,new Sword());
 			level.add(q);
 		}
 

@@ -24,11 +24,11 @@ public class CoinParticle extends Entity{
 	}
 	
 	public void update(){
-		int radius = 50;
+		int radius = 7;
 		int xp = Player.xp;
 		int yp = Player.yp;
 		time++;
-		if(this.x >= xp && this.x <= xp + 7 && this.y >= yp && this.y <= yp+7){
+		if(isInRadius(xp,yp,radius)){
 			Player.money+=1;
 			remove();
 		}else if(time > 320) remove();

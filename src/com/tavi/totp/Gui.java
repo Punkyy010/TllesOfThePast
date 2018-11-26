@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import com.tavi.totp.entity.mob.Mob;
 import com.tavi.totp.entity.mob.Player;
+import com.tavi.totp.entity.mob.weapons.Sword;
 import com.tavi.totp.graphics.Coins;
 import com.tavi.totp.graphics.Coins2;
 import com.tavi.totp.graphics.CoinsBorder;
@@ -38,7 +39,7 @@ public class Gui {
 	
 	int secounds = 0;
 	int minutes = 0;
-	public static String wp = "2";
+	public static String wp = "1";
 	public static int kills = 0;
 	
 	public void init(int width,int height,Game game,Keyboard key){
@@ -64,9 +65,14 @@ public class Gui {
 		
 		//System.out.println(Game.scale);
 		
+		if(Player.inHand && Player.weapon instanceof Sword) {
+			wp = "9";
+		}
+		if(!Player.inHand) wp = "1";
+		
 		if(Player.changeL) kills = 0;
 		
-		if(key.one.clicked) wp = "2";
+		//if(key.one.clicked) wp = "2";
 		//if(key.two.clicked) wp = "2";
 		
 	}

@@ -22,7 +22,7 @@ public class SpriteSheet {
 	public static SpriteSheet sword = new SpriteSheet("/player/sword.png",32);
 	//public static SpriteSheet fog = new SpriteSheet("/textures/fog.png",50);
 	//public static SpriteSheet ui = new SpriteSheet("/player/uihs.png",4);
-	
+	public static SpriteSheet weapons = new SpriteSheet("/player/weapon.png",162,252);
 	public static SpriteSheet player = new SpriteSheet("/player/spritesheet.png", 128);
 	public static SpriteSheet eschimo = new SpriteSheet("/player/Eschimo.png",48);
 	public static SpriteSheet bullets = new SpriteSheet("/player/bullets.png",24);

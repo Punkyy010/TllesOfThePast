@@ -1,14 +1,18 @@
-package com.tavi.totp.mob.skeleton;
+package com.tavi.totp.entity.mob.weapons;
 
 import com.tavi.totp.entity.mob.Player;
+import com.tavi.totp.entity.projectile.Projectile;
 import com.tavi.totp.graphics.Screen;
 import com.tavi.totp.graphics.Sprite;
 
-public abstract class Skeleton {
+public abstract class Weapon {
 
-	protected Sprite Down,Up,Left,Right,Ldown,Rdown,Lup,Rup,Run_down,Run_up,Run_left,Run_right;
+	protected Sprite Down,Up,Left,Right,Ldown,Rdown,Lup,Rup,notEquiped;
 	protected int anim = 0;
-
+	protected Projectile p;
+	public int avgDmg;
+	public int avgSpeed;
+	public int avgWeight;
 	
 	public Sprite checkDir(int dirr,Sprite current) {
 		if(dirr == 0) current = Down; 
@@ -19,7 +23,6 @@ public abstract class Skeleton {
 		else if(dirr == 5) current = Lup;
 		else if(dirr == 6) current = Left;
 		else current = Ldown;
-		//System.out.println("dadadadaada" + dirr);
 		return current;
 	}
 	
@@ -28,9 +31,7 @@ public abstract class Skeleton {
 	
 	public void animation(int x,int y,int dirr,boolean arms,Sprite current,Screen screen) {
 		Sprite curr = checkDir(dirr,current);
-		Sprite anim1 = Run_down;
-		
-		//if(arms && ) {
+		/*Sprite anim1 = Run_down;
 		
 		if(dirr == 0 || dirr == 1 || dirr == 7) {
 			anim1 = Run_down;
@@ -40,18 +41,20 @@ public abstract class Skeleton {
 			anim1 = Run_up;
 		}else if(dirr == 6){
 			anim1 = Run_left;
-		}
+		}*/
 		
 		if (Player.walking) {
 			if (anim % 20 > 10) {
-				screen.renderMob2(x, y, anim1, 0);
+				//screen.renderMob2(x, y, anim1, 0);
 			} else {
-				screen.renderMob2(x, y, anim1, 1);
+				//screen.renderMob2(x, y, anim1, 1);
 			}
 		}else {
 			screen.renderMob2(x, y, curr, 0);
 		}
 		
 	}
-	
+	public void render(int x,int y,int dir,Screen screen) {
+		
+	}
 }

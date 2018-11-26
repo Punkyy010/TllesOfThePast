@@ -12,7 +12,7 @@ public class Weapon {
 	public static Sprite[] pl_char = Sprite.split(pl);
 	public static Sprite[] rip_char = Sprite.split(rip);
 
-	private String chars = "12345678"; //
+	private String chars = "123456789"; //
 	private String rock = "12";
 	private String ple = "12";
 	private String r = "1";
